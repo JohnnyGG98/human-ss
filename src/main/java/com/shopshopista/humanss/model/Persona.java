@@ -79,7 +79,7 @@ public class Persona implements Serializable {
 	public void setIdentificacionPersona(String identificacionPersona) {
 		this.identificacionPersona = identificacionPersona;
 	}
-
+	
 	public String getPrimerNombrePersona() {
 		return primerNombrePersona;
 	}

@@ -16,56 +16,58 @@ public class Calificaciones {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_calificacion")
-	private Long idCalificacion;
+	private Long id_calificacion;
 
-	@Column(name = "id_cliente", nullable = false)
-	private Long idCliente;
+	
+	// ejemplo de foreing Key
+	@Column(name = "id_cliente", table = "Cliente" ,nullable = false)
+	private Long id_cliente;
 
 	@Column(name = "id_producto", nullable = false)
-	private Long idProducto;
+	private Long id_producto;
 
 	@Column(name = "calificacion", columnDefinition = "NUMERIC(2, 2)")
 	private Double calificacion;
 
-	@Column(name = "cal_activo")
-	private Boolean calActivo;
+	@Column(name = "cal_activo", columnDefinition="DEFAULT 'true'")
+	private Boolean cal_activo;
 
 	public Calificaciones() {
 
 	}
 
-	public Calificaciones(Long idCalificacion, Long idCliente, Long idProducto, Double calificacion,
-			Boolean calActivo) {
-
-		this.idCalificacion = idCalificacion;
-		this.idCliente = idCliente;
-		this.idProducto = idProducto;
+	public Calificaciones(Long id_calificacion, Long id_cliente, Long id_producto, Double calificacion,
+			Boolean cal_activo) {
+		
+		this.id_calificacion = id_calificacion;
+		this.id_cliente = id_cliente;
+		this.id_producto = id_producto;
 		this.calificacion = calificacion;
-		this.calActivo = calActivo;
+		this.cal_activo = cal_activo;
 	}
 
-	public Long getIdCalificacion() {
-		return idCalificacion;
+	public Long getId_calificacion() {
+		return id_calificacion;
 	}
 
-	public void setIdCalificacion(Long idCalificacion) {
-		this.idCalificacion = idCalificacion;
+	public void setId_calificacion(Long id_calificacion) {
+		this.id_calificacion = id_calificacion;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId_cliente() {
+		return id_cliente;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId_cliente(Long id_cliente) {
+		this.id_cliente = id_cliente;
 	}
 
-	public Long getIdProducto() {
-		return idProducto;
+	public Long getId_producto() {
+		return id_producto;
 	}
 
-	public void setIdProducto(Long idProducto) {
-		this.idProducto = idProducto;
+	public void setId_producto(Long id_producto) {
+		this.id_producto = id_producto;
 	}
 
 	public Double getCalificacion() {
@@ -76,12 +78,12 @@ public class Calificaciones {
 		this.calificacion = calificacion;
 	}
 
-	public Boolean getCalActivo() {
-		return calActivo;
+	public Boolean getCal_activo() {
+		return cal_activo;
 	}
 
-	public void setCalActivo(Boolean calActivo) {
-		this.calActivo = calActivo;
+	public void setCal_activo(Boolean cal_activo) {
+		this.cal_activo = cal_activo;
 	}
 
 	public static long getSerialversionuid() {
@@ -90,8 +92,10 @@ public class Calificaciones {
 
 	@Override
 	public String toString() {
-		return "Calificaciones [idCalificacion=" + idCalificacion + ", idCliente=" + idCliente + ", idProducto="
-				+ idProducto + ", calificacion=" + calificacion + ", calActivo=" + calActivo + "]";
+		return "Calificaciones [id_calificacion=" + id_calificacion + ", id_cliente=" + id_cliente + ", id_producto="
+				+ id_producto + ", calificacion=" + calificacion + ", cal_activo=" + cal_activo + "]";
 	}
+
+	
 
 }

@@ -18,72 +18,72 @@ public class ProductosDeseados {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	@Column(name = "id_producto_deseado")
-	private Long idProductoDeseado;
+	private Long id_producto_deseado;
 	
 	@Column(name = "id_cliente", nullable = false)
-	private Long idCliente;
+	private Long id_cliente;
 	
 	@Column(name = "id_producto", nullable = false)
-	private Long idProducto;
+	private Long id_producto;
 	
 	@Column(name = "prde_fecha_ingreso",  columnDefinition="DATE DEFAULT now()", nullable = false)
-	private LocalDateTime proDesFechaIngreso;
+	private LocalDateTime prde_fecha_ingreso;
 	
-	@Column(name = "prde_activo", nullable = false)
-	private Boolean proDesActivo;
+	@Column(name = "prde_activo", columnDefinition="DEFAULT 'true'", nullable = false)
+	private Boolean prde_activo;
 
 	public ProductosDeseados() {
 		
 	}
 
-	public ProductosDeseados(Long idProductoDeseado, Long idCliente, Long idProducto, LocalDateTime proDesFechaIngreso,
-			Boolean proDesActivo) {
+	public ProductosDeseados(Long id_producto_deseado, Long id_cliente, Long id_producto,
+			LocalDateTime prde_fecha_ingreso, Boolean prde_activo) {
 		
-		this.idProductoDeseado = idProductoDeseado;
-		this.idCliente = idCliente;
-		this.idProducto = idProducto;
-		this.proDesFechaIngreso = proDesFechaIngreso;
-		this.proDesActivo = proDesActivo;
+		this.id_producto_deseado = id_producto_deseado;
+		this.id_cliente = id_cliente;
+		this.id_producto = id_producto;
+		this.prde_fecha_ingreso = prde_fecha_ingreso;
+		this.prde_activo = prde_activo;
 	}
 
-	public Long getIdProductoDeseado() {
-		return idProductoDeseado;
+	public Long getId_producto_deseado() {
+		return id_producto_deseado;
 	}
 
-	public void setIdProductoDeseado(Long idProductoDeseado) {
-		this.idProductoDeseado = idProductoDeseado;
+	public void setId_producto_deseado(Long id_producto_deseado) {
+		this.id_producto_deseado = id_producto_deseado;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId_cliente() {
+		return id_cliente;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId_cliente(Long id_cliente) {
+		this.id_cliente = id_cliente;
 	}
 
-	public Long getIdProducto() {
-		return idProducto;
+	public Long getId_producto() {
+		return id_producto;
 	}
 
-	public void setIdProducto(Long idProducto) {
-		this.idProducto = idProducto;
+	public void setId_producto(Long id_producto) {
+		this.id_producto = id_producto;
 	}
 
-	public LocalDateTime getProDesFechaIngreso() {
-		return proDesFechaIngreso;
+	public LocalDateTime getPrde_fecha_ingreso() {
+		return prde_fecha_ingreso;
 	}
 
-	public void setProDesFechaIngreso(LocalDateTime proDesFechaIngreso) {
-		this.proDesFechaIngreso = proDesFechaIngreso;
+	public void setPrde_fecha_ingreso(LocalDateTime prde_fecha_ingreso) {
+		this.prde_fecha_ingreso = prde_fecha_ingreso;
 	}
 
-	public Boolean getProDesActivo() {
-		return proDesActivo;
+	public Boolean getPrde_activo() {
+		return prde_activo;
 	}
 
-	public void setProDesActivo(Boolean proDesActivo) {
-		this.proDesActivo = proDesActivo;
+	public void setPrde_activo(Boolean prde_activo) {
+		this.prde_activo = prde_activo;
 	}
 
 	public static long getSerialversionuid() {
@@ -92,10 +92,9 @@ public class ProductosDeseados {
 
 	@Override
 	public String toString() {
-		return "ProductosDeseados [idProductoDeseado=" + idProductoDeseado + ", idCliente=" + idCliente
-				+ ", idProducto=" + idProducto + ", proDesFechaIngreso=" + proDesFechaIngreso + ", proDesActivo="
-				+ proDesActivo + "]";
+		return "ProductosDeseados [id_producto_deseado=" + id_producto_deseado + ", id_cliente=" + id_cliente
+				+ ", id_producto=" + id_producto + ", prde_fecha_ingreso=" + prde_fecha_ingreso + ", prde_activo="
+				+ prde_activo + "]";
 	}
-	
 	
 }

@@ -16,43 +16,43 @@ public class Recomendaciones {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	@Column(name = "id_recomendacion")
-	private Long idRecomendacion;
+	private Long id_recomendacion;
 	
 	@Column(name = "id_cliente", nullable = false)
-	private Long idCliente;
+	private Long id_cliente;
 	
 	@Column(name = "recomendacion", length = 255, nullable = false)
 	private String recomendacion;
 	
-	@Column(name = "reco_activo", nullable = false)
-	private Boolean recoActivo;
+	@Column(name = "reco_activo", columnDefinition="DEFAULT 'true'", nullable = false)
+	private Boolean reco_activo;
 
 	public Recomendaciones() {
 		
 	}
 
-	public Recomendaciones(Long idRecomendacion, Long idCliente, String recomendacion, Boolean recoActivo) {
+	public Recomendaciones(Long id_recomendacion, Long id_cliente, String recomendacion, Boolean reco_activo) {
 		
-		this.idRecomendacion = idRecomendacion;
-		this.idCliente = idCliente;
+		this.id_recomendacion = id_recomendacion;
+		this.id_cliente = id_cliente;
 		this.recomendacion = recomendacion;
-		this.recoActivo = recoActivo;
+		this.reco_activo = reco_activo;
 	}
 
-	public Long getIdRecomendacion() {
-		return idRecomendacion;
+	public Long getId_recomendacion() {
+		return id_recomendacion;
 	}
 
-	public void setIdRecomendacion(Long idRecomendacion) {
-		this.idRecomendacion = idRecomendacion;
+	public void setId_recomendacion(Long id_recomendacion) {
+		this.id_recomendacion = id_recomendacion;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId_cliente() {
+		return id_cliente;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId_cliente(Long id_cliente) {
+		this.id_cliente = id_cliente;
 	}
 
 	public String getRecomendacion() {
@@ -63,23 +63,24 @@ public class Recomendaciones {
 		this.recomendacion = recomendacion;
 	}
 
-	public Boolean getRecoActivo() {
-		return recoActivo;
+	public Boolean getReco_activo() {
+		return reco_activo;
 	}
 
-	public void setRecoActivo(Boolean recoActivo) {
-		this.recoActivo = recoActivo;
+	public void setReco_activo(Boolean reco_activo) {
+		this.reco_activo = reco_activo;
 	}
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "Recomendaciones [idRecomendacion=" + idRecomendacion + ", idCliente=" + idCliente + ", recomendacion="
-				+ recomendacion + ", recoActivo=" + recoActivo + "]";
+		return "Recomendaciones [id_recomendacion=" + id_recomendacion + ", id_cliente=" + id_cliente
+				+ ", recomendacion=" + recomendacion + ", reco_activo=" + reco_activo + "]";
 	}
+
 	
 	
 }
