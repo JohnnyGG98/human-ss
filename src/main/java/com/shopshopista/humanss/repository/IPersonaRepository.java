@@ -9,8 +9,4 @@ import com.shopshopista.humanss.model.Persona;
 public interface IPersonaRepository extends JpaRepository<Persona, Long> {
 
 	
-	
-	
-	
-
 }
