@@ -28,13 +28,13 @@ public class Persona implements Serializable {
 	@Column(name="per_primer_nombre", nullable = false )
 	private String per_primer_nombre;
 	
-	@Column(name="per_segundo_nombre", length = 75, columnDefinition="character varying(75) DEFAULT ''")
+	@Column(name="per_segundo_nombre", length = 75, columnDefinition="DEFAULT ''")
 	private String per_segundo_nombre;
 	
 	@Column(name="per_primer_apellido", length = 75, nullable =false)
 	private String per_primer_apellido;
 	
-	@Column(name="per_segundo_apellido", length = 75, columnDefinition="character varying(75) DEFAULT ''")
+	@Column(name="per_segundo_apellido", length = 75, columnDefinition="DEFAULT ''")
 	private String per_segundo_apellido;
 	
 	@Column(name="per_correo", length = 50, nullable =false)
