@@ -18,84 +18,83 @@ public class Preferencias {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	@Column(name = "id_preferencia")
-	private Long idPreferencia;
+	private Long id_preferencia;
 	
 	@Column(name = "id_cliente", nullable = false)
-	private Long idCliente;
+	private Long id_cliente;
 	
 	@Column(name = "id_categoria", nullable = false)
-	private Long idCategoria;
+	private Long id_categoria;
 	
 	@Column(name = "pref_fecha_ingreso", columnDefinition="DATE DEFAULT now()", nullable = false)
-	private LocalDateTime prefeFechaIngreso;
+	private LocalDateTime pref_fecha_ingreso;
 	
-	@Column(name = "pref_activo", nullable = false)
-	private Boolean preferenciaActivo;
+	@Column(name = "pref_activo", columnDefinition="DEFAULT 'true'", nullable = false)
+	private Boolean pref_activo;
 
 	public Preferencias() {
 		
 	}
 
-	public Preferencias(Long idPreferencia, Long idCliente, Long idCategoria, LocalDateTime prefeFechaIngreso,
-			Boolean preferenciaActivo) {
+	public Preferencias(Long id_preferencia, Long id_cliente, Long id_categoria, LocalDateTime pref_fecha_ingreso,
+			Boolean pref_activo) {
 		
-		this.idPreferencia = idPreferencia;
-		this.idCliente = idCliente;
-		this.idCategoria = idCategoria;
-		this.prefeFechaIngreso = prefeFechaIngreso;
-		this.preferenciaActivo = preferenciaActivo;
+		this.id_preferencia = id_preferencia;
+		this.id_cliente = id_cliente;
+		this.id_categoria = id_categoria;
+		this.pref_fecha_ingreso = pref_fecha_ingreso;
+		this.pref_activo = pref_activo;
 	}
 
-	public Long getIdPreferencia() {
-		return idPreferencia;
+	public Long getId_preferencia() {
+		return id_preferencia;
 	}
 
-	public void setIdPreferencia(Long idPreferencia) {
-		this.idPreferencia = idPreferencia;
+	public void setId_preferencia(Long id_preferencia) {
+		this.id_preferencia = id_preferencia;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId_cliente() {
+		return id_cliente;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId_cliente(Long id_cliente) {
+		this.id_cliente = id_cliente;
 	}
 
-	public Long getIdCategoria() {
-		return idCategoria;
+	public Long getId_categoria() {
+		return id_categoria;
 	}
 
-	public void setIdCategoria(Long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setId_categoria(Long id_categoria) {
+		this.id_categoria = id_categoria;
 	}
 
-	public LocalDateTime getPrefeFechaIngreso() {
-		return prefeFechaIngreso;
+	public LocalDateTime getPref_fecha_ingreso() {
+		return pref_fecha_ingreso;
 	}
 
-	public void setPrefeFechaIngreso(LocalDateTime prefeFechaIngreso) {
-		this.prefeFechaIngreso = prefeFechaIngreso;
+	public void setPref_fecha_ingreso(LocalDateTime pref_fecha_ingreso) {
+		this.pref_fecha_ingreso = pref_fecha_ingreso;
 	}
 
-	public Boolean getPreferenciaActivo() {
-		return preferenciaActivo;
+	public Boolean getPref_activo() {
+		return pref_activo;
 	}
 
-	public void setPreferenciaActivo(Boolean preferenciaActivo) {
-		this.preferenciaActivo = preferenciaActivo;
+	public void setPref_activo(Boolean pref_activo) {
+		this.pref_activo = pref_activo;
 	}
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "Preferencias [idPreferencia=" + idPreferencia + ", idCliente=" + idCliente + ", idCategoria="
-				+ idCategoria + ", prefeFechaIngreso=" + prefeFechaIngreso + ", preferenciaActivo=" + preferenciaActivo
-				+ "]";
+		return "Preferencias [id_preferencia=" + id_preferencia + ", id_cliente=" + id_cliente + ", id_categoria="
+				+ id_categoria + ", pref_fecha_ingreso=" + pref_fecha_ingreso + ", pref_activo=" + pref_activo + "]";
 	}
-	
+
 	
 }

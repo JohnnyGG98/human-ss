@@ -19,7 +19,6 @@ public class Persona implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_persona")
-<<<<<<< HEAD
 	private Long id_persona;	
 	
 	@Column(name = "per_identificacion", length = 15, nullable =false)	
@@ -45,17 +44,23 @@ public class Persona implements Serializable {
 	
 	@Column(name="per_fecha_registo", columnDefinition="timestamp DEFAULT now()")
 	private LocalDateTime per_fecha_registo;
+<<<<<<< HEAD
 	
 	
 
+=======
+>>>>>>> 8d0e4084282b6b44f0da30103b6e178914feddf3
 
 	public Persona() {
 
 	}
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 8d0e4084282b6b44f0da30103b6e178914feddf3
 	public Persona(Long id_persona, String per_identificacion, String per_primer_nombre, String per_segundo_nombre,
 			String per_primer_apellido, String per_segundo_apellido, String per_correo, String per_sexo,
 			LocalDateTime per_fecha_registo) {
@@ -196,6 +201,7 @@ public class Persona implements Serializable {
 		this.per_fecha_registo = per_fecha_registo;
 	}
 
+<<<<<<< HEAD
 
 
 
@@ -206,6 +212,9 @@ public class Persona implements Serializable {
 
 
 
+=======
+
+>>>>>>> 8d0e4084282b6b44f0da30103b6e178914feddf3
 	@Override
 	public String toString() {
 		return "Persona [id_persona=" + id_persona + ", per_identificacion=" + per_identificacion
@@ -214,9 +223,15 @@ public class Persona implements Serializable {
 				+ ", per_correo=" + per_correo + ", per_sexo=" + per_sexo + ", per_fecha_registo=" + per_fecha_registo
 				+ "]";
 	}
+<<<<<<< HEAD
 	
 	
 	
 	
 
 }
+=======
+
+	
+}
+>>>>>>> 8d0e4084282b6b44f0da30103b6e178914feddf3
