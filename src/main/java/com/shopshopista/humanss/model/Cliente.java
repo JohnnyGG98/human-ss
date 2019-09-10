@@ -14,8 +14,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="\"Clientes\"")
-@PrimaryKeyJoinColumn(name = "id_cliente", foreignKey=@ForeignKey(name = "fk_cliente_persona") )
-public class Cliente extends Persona implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_cliente", foreignKey=@ForeignKey(name = "fk_cliente_usuario") )
+public class Cliente extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		
@@ -26,14 +26,15 @@ public class Cliente extends Persona implements Serializable {
 		super();
 	}
 
-	
-	public Cliente(Long id_persona, String per_identificacion, String per_primer_nombre, String per_segundo_nombre,
-			String per_primer_apellido, String per_segundo_apellido, String per_correo, String per_sexo,
-			LocalDateTime per_fecha_registo, LocalDate cli_fecha_nacimiento) {
-		super(id_persona, per_identificacion, per_primer_nombre, per_segundo_nombre, per_primer_apellido,
-				per_segundo_apellido, per_correo, per_sexo, per_fecha_registo);
+
+	public Cliente(Long id_usuario, Persona persona, String user_nick, String user_pass,
+			LocalDate cli_fecha_nacimiento) {
+		super(id_usuario, persona, user_nick, user_pass);
 		this.cli_fecha_nacimiento = cli_fecha_nacimiento;
 	}
+
+
+
 
 
 	public LocalDate getCli_fecha_nacimiento() {
