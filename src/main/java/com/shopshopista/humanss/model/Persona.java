@@ -4,20 +4,23 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "\"Personas\"" )
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Persona implements Serializable {
+
+public class Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -50,6 +53,9 @@ public abstract class Persona implements Serializable {
 	@Column(name="per_fecha_registo", columnDefinition="timestamp DEFAULT 'now()'")
 	private LocalDateTime per_fecha_registo=ZonedDateTime.now(ZoneId.of("America/Guayaquil")).toLocalDateTime();
 
+	@JsonManagedReference
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Usuario> usuariosPersona;
 	
 	public Persona() {
 		
@@ -134,6 +140,7 @@ public abstract class Persona implements Serializable {
 		this.per_sexo = per_sexo;
 	}
 
+
 	public LocalDateTime getPer_fecha_registo() {
 		return per_fecha_registo;
 	}
@@ -146,13 +153,14 @@ public abstract class Persona implements Serializable {
 		return serialVersionUID;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Persona [id_persona=" + id_persona + ", per_identificacion=" + per_identificacion
 				+ ", per_primer_nombre=" + per_primer_nombre + ", per_segundo_nombre=" + per_segundo_nombre
 				+ ", per_primer_apellido=" + per_primer_apellido + ", per_segundo_apellido=" + per_segundo_apellido
 				+ ", per_correo=" + per_correo + ", per_sexo=" + per_sexo + ", per_fecha_registo=" + per_fecha_registo
-				+ "]";
+				+ ", usuariosPersona=" + usuariosPersona + ", toString()=" + super.toString() + "]";
 	}
 	
 	

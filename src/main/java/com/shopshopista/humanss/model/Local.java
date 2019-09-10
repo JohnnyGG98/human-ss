@@ -2,6 +2,7 @@ package com.shopshopista.humanss.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,8 +29,8 @@ public class Local implements Serializable {
 
 	@JsonBackReference
 	@JoinColumn(name="id_vendedor", foreignKey = @ForeignKey(name="fk_local_vendedor", foreignKeyDefinition = "FOREIGN KEY (id_vendedor) REFERENCES \"Vendedores\" ON UPDATE CASCADE ON DELETE CASCADE"))
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Vendedor id_vendedor;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Vendedor vendedor;
 	
 	@Column(name="loc_correo", length = 50, nullable =false)
 	private String loc_correo;
@@ -44,11 +45,11 @@ public class Local implements Serializable {
 		
 	}
 
-	public Local(Long id_local, Vendedor id_vendedor, String loc_correo, String loc_calle_principal,
+	public Local(Long id_local, Vendedor vendedor, String loc_correo, String loc_calle_principal,
 			String loc_calle_secundaria) {
-		super();
+	
 		this.id_local = id_local;
-		this.id_vendedor = id_vendedor;
+		this.vendedor = vendedor;
 		this.loc_correo = loc_correo;
 		this.loc_calle_principal = loc_calle_principal;
 		this.loc_calle_secundaria = loc_calle_secundaria;
@@ -62,12 +63,12 @@ public class Local implements Serializable {
 		this.id_local = id_local;
 	}
 
-	public Vendedor getId_vendedor() {
-		return id_vendedor;
+	public Vendedor getVendedor() {
+		return vendedor;
 	}
 
-	public void setId_vendedor(Vendedor id_vendedor) {
-		this.id_vendedor = id_vendedor;
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
 	}
 
 	public String getLoc_correo() {
@@ -100,7 +101,7 @@ public class Local implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Local [id_local=" + id_local + ", id_vendedor=" + id_vendedor + ", loc_correo=" + loc_correo
+		return "Local [id_local=" + id_local + ", vendedor=" + vendedor + ", loc_correo=" + loc_correo
 				+ ", loc_calle_principal=" + loc_calle_principal + ", loc_calle_secundaria=" + loc_calle_secundaria
 				+ "]";
 	}
