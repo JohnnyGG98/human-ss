@@ -1,11 +1,18 @@
 package com.shopshopista.humanss.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Recomendaciones")
@@ -18,8 +25,10 @@ public class Recomendaciones {
 	@Column(name = "id_recomendacion")
 	private Long id_recomendacion;
 	
-	@Column(name = "id_cliente", nullable = false)
-	private Long id_cliente;
+	@JsonBackReference
+	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_recomendaciones_fk"))
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Cliente cliente;
 	
 	@Column(name = "recomendacion", length = 255, nullable = false)
 	private String recomendacion;
@@ -31,10 +40,9 @@ public class Recomendaciones {
 		
 	}
 
-	public Recomendaciones(Long id_recomendacion, Long id_cliente, String recomendacion, Boolean reco_activo) {
-		
+	public Recomendaciones(Long id_recomendacion, Cliente cliente, String recomendacion, Boolean reco_activo) {
 		this.id_recomendacion = id_recomendacion;
-		this.id_cliente = id_cliente;
+		this.cliente = cliente;
 		this.recomendacion = recomendacion;
 		this.reco_activo = reco_activo;
 	}
@@ -47,12 +55,12 @@ public class Recomendaciones {
 		this.id_recomendacion = id_recomendacion;
 	}
 
-	public Long getId_cliente() {
-		return id_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public String getRecomendacion() {
@@ -77,10 +85,9 @@ public class Recomendaciones {
 
 	@Override
 	public String toString() {
-		return "Recomendaciones [id_recomendacion=" + id_recomendacion + ", id_cliente=" + id_cliente
-				+ ", recomendacion=" + recomendacion + ", reco_activo=" + reco_activo + "]";
+		return "Recomendaciones [id_recomendacion=" + id_recomendacion + ", recomendacion=" + recomendacion
+				+ ", reco_activo=" + reco_activo + "]";
 	}
-
 	
 	
 }
