@@ -63,7 +63,7 @@ public class Persona implements Serializable {
 
 	public Persona(Long id_persona, String per_identificacion, String per_primer_nombre, String per_segundo_nombre,
 			String per_primer_apellido, String per_segundo_apellido, String per_correo, String per_sexo,
-			LocalDateTime per_fecha_registo) {
+			LocalDateTime per_fecha_registro) {
 		
 		this.id_persona = id_persona;
 		this.per_identificacion = per_identificacion;
@@ -73,7 +73,7 @@ public class Persona implements Serializable {
 		this.per_segundo_apellido = per_segundo_apellido;
 		this.per_correo = per_correo;
 		this.per_sexo = per_sexo;
-		this.per_fecha_registo = per_fecha_registo;
+		this.per_fecha_registo = per_fecha_registro;
 	}
 
 	public Long getId_persona() {
