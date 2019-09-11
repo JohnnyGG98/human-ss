@@ -2,15 +2,22 @@ package com.shopshopista.humanss.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name = "ProductosDeseados")
+@Table(name = "\"ProductosDeseados\"")
 public class ProductosDeseados {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,11 +27,16 @@ public class ProductosDeseados {
 	@Column(name = "id_producto_deseado")
 	private Long id_producto_deseado;
 	
-	@Column(name = "id_cliente", nullable = false)
-	private Long id_cliente;
 	
-	@Column(name = "id_producto", nullable = false)
-	private Long id_producto;
+	@JsonBackReference
+	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_prodDeseado_fk"))
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Cliente cliente;
+	
+	@JsonBackReference
+	@JoinColumn(name = "id_producto", referencedColumnName = "id_producto", foreignKey = @ForeignKey(name = "producto_prodDeseado_fk"))
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Producto producto;
 	
 	@Column(name = "prde_fecha_ingreso",  columnDefinition="DATE DEFAULT now()", nullable = false)
 	private LocalDateTime prde_fecha_ingreso;
@@ -36,12 +48,11 @@ public class ProductosDeseados {
 		
 	}
 
-	public ProductosDeseados(Long id_producto_deseado, Long id_cliente, Long id_producto,
+	public ProductosDeseados(Long id_producto_deseado, Cliente cliente, Producto producto,
 			LocalDateTime prde_fecha_ingreso, Boolean prde_activo) {
-		
 		this.id_producto_deseado = id_producto_deseado;
-		this.id_cliente = id_cliente;
-		this.id_producto = id_producto;
+		this.cliente = cliente;
+		this.producto = producto;
 		this.prde_fecha_ingreso = prde_fecha_ingreso;
 		this.prde_activo = prde_activo;
 	}
@@ -54,20 +65,20 @@ public class ProductosDeseados {
 		this.id_producto_deseado = id_producto_deseado;
 	}
 
-	public Long getId_cliente() {
-		return id_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	public Long getId_producto() {
-		return id_producto;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setId_producto(Long id_producto) {
-		this.id_producto = id_producto;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
 	public LocalDateTime getPrde_fecha_ingreso() {
@@ -92,9 +103,10 @@ public class ProductosDeseados {
 
 	@Override
 	public String toString() {
-		return "ProductosDeseados [id_producto_deseado=" + id_producto_deseado + ", id_cliente=" + id_cliente
-				+ ", id_producto=" + id_producto + ", prde_fecha_ingreso=" + prde_fecha_ingreso + ", prde_activo="
-				+ prde_activo + "]";
+		return "ProductosDeseados [id_producto_deseado=" + id_producto_deseado + ", prde_fecha_ingreso="
+				+ prde_fecha_ingreso + ", prde_activo=" + prde_activo + "]";
 	}
 	
+	
+
 }
