@@ -50,8 +50,8 @@ public class Persona implements Serializable {
 	@Column(name="per_sexo", length = 50, nullable =false)
 	private String per_sexo;
 	
-	@Column(name="per_fecha_registo", columnDefinition="timestamp DEFAULT 'now()'")
-	private LocalDateTime per_fecha_registo=ZonedDateTime.now(ZoneId.of("America/Guayaquil")).toLocalDateTime();
+	@Column(name="per_fecha_registro", columnDefinition="timestamp DEFAULT 'now()'")
+	private LocalDateTime per_fecha_registro=ZonedDateTime.now(ZoneId.of("America/Guayaquil")).toLocalDateTime();
 
 	@JsonManagedReference
 	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -63,7 +63,7 @@ public class Persona implements Serializable {
 
 	public Persona(Long id_persona, String per_identificacion, String per_primer_nombre, String per_segundo_nombre,
 			String per_primer_apellido, String per_segundo_apellido, String per_correo, String per_sexo,
-			LocalDateTime per_fecha_registo) {
+			LocalDateTime per_fecha_registro) {
 		
 		this.id_persona = id_persona;
 		this.per_identificacion = per_identificacion;
@@ -73,7 +73,7 @@ public class Persona implements Serializable {
 		this.per_segundo_apellido = per_segundo_apellido;
 		this.per_correo = per_correo;
 		this.per_sexo = per_sexo;
-		this.per_fecha_registo = per_fecha_registo;
+		this.per_fecha_registro = per_fecha_registro;
 	}
 
 	public Long getId_persona() {
@@ -141,12 +141,12 @@ public class Persona implements Serializable {
 	}
 
 
-	public LocalDateTime getPer_fecha_registo() {
-		return per_fecha_registo;
+	public LocalDateTime getPer_fecha_registro() {
+		return per_fecha_registro;
 	}
 
-	public void setPer_fecha_registo(LocalDateTime per_fecha_registo) {
-		this.per_fecha_registo = per_fecha_registo;
+	public void setPer_fecha_registro(LocalDateTime per_fecha_registro) {
+		this.per_fecha_registro = per_fecha_registro;
 	}
 
 	public static long getSerialversionuid() {
@@ -159,7 +159,7 @@ public class Persona implements Serializable {
 		return "Persona [id_persona=" + id_persona + ", per_identificacion=" + per_identificacion
 				+ ", per_primer_nombre=" + per_primer_nombre + ", per_segundo_nombre=" + per_segundo_nombre
 				+ ", per_primer_apellido=" + per_primer_apellido + ", per_segundo_apellido=" + per_segundo_apellido
-				+ ", per_correo=" + per_correo + ", per_sexo=" + per_sexo + ", per_fecha_registo=" + per_fecha_registo
+				+ ", per_correo=" + per_correo + ", per_sexo=" + per_sexo + ", per_fecha_registro=" + per_fecha_registro
 				+ ", usuariosPersona=" + usuariosPersona + ", toString()=" + super.toString() + "]";
 	}
 	
