@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.shopshopista.humanss.model.producto.Productos;
 
 @Entity
 @Table(name = "\"Calificaciones\"")
@@ -33,7 +34,7 @@ public class Calificaciones {
 	@JsonBackReference
 	@JoinColumn(name = "id_producto", referencedColumnName = "id_producto", foreignKey = @ForeignKey(name = "producto_calificaciones_fk"))
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Producto producto;
+	private Productos producto;
 
 	@Column(name = "calificacion", columnDefinition = "NUMERIC(2, 2)")
 	private Double calificacion;
@@ -45,7 +46,7 @@ public class Calificaciones {
 
 	}
 
-	public Calificaciones(Long id_calificacion, Cliente cliente, Producto producto, Double calificacion,
+	public Calificaciones(Long id_calificacion, Cliente cliente, Productos producto, Double calificacion,
 			Boolean cal_activo) {
 		this.id_calificacion = id_calificacion;
 		this.cliente = cliente;
@@ -70,11 +71,11 @@ public class Calificaciones {
 		this.cliente = cliente;
 	}
 
-	public Producto getProducto() {
+	public Productos getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(Productos producto) {
 		this.producto = producto;
 	}
 

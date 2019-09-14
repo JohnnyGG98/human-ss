@@ -1,7 +1,6 @@
 package com.shopshopista.humanss.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.shopshopista.humanss.model.producto.Categorias;
 
 @Entity
 @Table(name = "\"Preferencias\"")
@@ -36,7 +36,7 @@ public class Preferencias {
 	@JsonBackReference
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria", foreignKey = @ForeignKey(name = "categoria_fk"))
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Categoria categoria;
+	private Categorias categoria;
 	
 	@Column(name = "pref_fecha_ingreso", columnDefinition="DATE DEFAULT now()", nullable = false)
 	private LocalDate pref_fecha_ingreso;
@@ -48,7 +48,7 @@ public class Preferencias {
 		
 	}
 
-	public Preferencias(Long id_preferencia, Cliente cliente, Categoria categoria, LocalDate pref_fecha_ingreso,
+	public Preferencias(Long id_preferencia, Cliente cliente, Categorias categoria, LocalDate pref_fecha_ingreso,
 			Boolean pref_activo) {
 		this.id_preferencia = id_preferencia;
 		this.cliente = cliente;
@@ -73,11 +73,11 @@ public class Preferencias {
 		this.cliente = cliente;
 	}
 
-	public Categoria getCategoria() {
+	public Categorias getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(Categorias categoria) {
 		this.categoria = categoria;
 	}
 
@@ -106,7 +106,5 @@ public class Preferencias {
 		return "Preferencias [id_preferencia=" + id_preferencia + ", pref_fecha_ingreso=" + pref_fecha_ingreso
 				+ ", pref_activo=" + pref_activo + "]";
 	}
-
-	
-	
+        
 }
