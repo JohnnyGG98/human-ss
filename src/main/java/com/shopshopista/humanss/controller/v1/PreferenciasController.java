@@ -17,7 +17,7 @@ public class PreferenciasController {
     @Autowired
     private IPreferenciasRepository preferenciaRepository;
 
-    @PostMapping("/preferencias")
+    @PostMapping("/preferencias/insertar")
     @ResponseBody
     public Preferencias guardar(@RequestBody Preferencias preferencias) {
         return this.preferenciaRepository.save(preferencias);

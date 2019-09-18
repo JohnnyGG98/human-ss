@@ -20,7 +20,7 @@ public class ProductosDeseadosController {
 	@Autowired
 	private IProductosDeseadosRepository productosDeseadosRepositorio;
 	
-	@PostMapping("/productosDeseados")
+	@PostMapping("/productosDeseados/insertar")
     @ResponseBody
     public ProductosDeseados guardar(@RequestBody ProductosDeseados productosDeseados) {
         return this.productosDeseadosRepositorio.save(productosDeseados);

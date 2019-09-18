@@ -13,10 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Recomendaciones")
-public class Recomendaciones {
+public class Recomendaciones implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -33,7 +34,7 @@ public class Recomendaciones {
 	@Column(name = "recomendacion", length = 255, nullable = false)
 	private String recomendacion;
 	
-	@Column(name = "reco_activo", columnDefinition="DEFAULT 'true'", nullable = false)
+	@Column(name = "reco_activo", columnDefinition="BOOLEAN DEFAULT 'true'", nullable = false)
 	private Boolean reco_activo;
 
 	public Recomendaciones() {

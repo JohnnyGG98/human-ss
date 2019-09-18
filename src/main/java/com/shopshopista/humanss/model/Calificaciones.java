@@ -13,96 +13,92 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.shopshopista.humanss.model.producto.Productos;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "\"Calificaciones\"")
-public class Calificaciones {
+public class Calificaciones implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_calificacion")
-	private Long id_calificacion;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_calificacion")
+    private Long id_calificacion;
 
-	@JsonBackReference
-	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_fk"))
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Cliente cliente;
-	
-	@JsonBackReference
-	@JoinColumn(name = "id_producto", referencedColumnName = "id_producto", foreignKey = @ForeignKey(name = "producto_calificaciones_fk"))
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Productos producto;
+    @JsonBackReference
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_fk"))
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Cliente cliente;
 
-	@Column(name = "calificacion", columnDefinition = "NUMERIC(2, 2)")
-	private Double calificacion;
+    @Column(name = "id_producto")
+    private Long id_producto;
 
-	@Column(name = "cal_activo", columnDefinition = "DEFAULT 'true'")
-	private Boolean cal_activo;
+    @Column(name = "calificacion", columnDefinition = "NUMERIC(2, 2)")
+    private Double calificacion;
 
-	public Calificaciones() {
+    @Column(name = "cal_activo", columnDefinition = "BOOLEAN DEFAULT 'true'")
+    private Boolean cal_activo;
 
-	}
+    public Calificaciones() {
 
-	public Calificaciones(Long id_calificacion, Cliente cliente, Productos producto, Double calificacion,
-			Boolean cal_activo) {
-		this.id_calificacion = id_calificacion;
-		this.cliente = cliente;
-		this.producto = producto;
-		this.calificacion = calificacion;
-		this.cal_activo = cal_activo;
-	}
+    }
 
-	public Long getId_calificacion() {
-		return id_calificacion;
-	}
+    public Calificaciones(Long id_calificacion, Cliente cliente, Long id_producto, Double calificacion, Boolean cal_activo) {
+        this.id_calificacion = id_calificacion;
+        this.cliente = cliente;
+        this.id_producto = id_producto;
+        this.calificacion = calificacion;
+        this.cal_activo = cal_activo;
+    }
 
-	public void setId_calificacion(Long id_calificacion) {
-		this.id_calificacion = id_calificacion;
-	}
+    public Long getId_calificacion() {
+        return id_calificacion;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public void setId_calificacion(Long id_calificacion) {
+        this.id_calificacion = id_calificacion;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public Productos getProducto() {
-		return producto;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public void setProducto(Productos producto) {
-		this.producto = producto;
-	}
+    public Long getId_producto() {
+        return id_producto;
+    }
 
-	public Double getCalificacion() {
-		return calificacion;
-	}
+    public void setId_producto(Long id_producto) {
+        this.id_producto = id_producto;
+    }
 
-	public void setCalificacion(Double calificacion) {
-		this.calificacion = calificacion;
-	}
+    public Double getCalificacion() {
+        return calificacion;
+    }
 
-	public Boolean getCal_activo() {
-		return cal_activo;
-	}
+    public void setCalificacion(Double calificacion) {
+        this.calificacion = calificacion;
+    }
 
-	public void setCal_activo(Boolean cal_activo) {
-		this.cal_activo = cal_activo;
-	}
+    public Boolean getCal_activo() {
+        return cal_activo;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public void setCal_activo(Boolean cal_activo) {
+        this.cal_activo = cal_activo;
+    }
 
-	@Override
-	public String toString() {
-		return "Calificaciones [id_calificacion=" + id_calificacion + ", calificacion=" + calificacion + ", cal_activo="
-				+ cal_activo + "]";
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "Calificaciones{" + "id_calificacion=" + id_calificacion + ", cliente=" + cliente + ", id_producto=" + id_producto + ", calificacion=" + calificacion + ", cal_activo=" + cal_activo + '}';
+    }
 
 }

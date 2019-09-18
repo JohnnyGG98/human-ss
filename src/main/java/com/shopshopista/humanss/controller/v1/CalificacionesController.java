@@ -17,7 +17,7 @@ public class CalificacionesController {
     @Autowired
     private ICalificacionesRepository calificacionesRepositorio;
 
-    @PostMapping("/calificaciones")
+    @PostMapping("/calificaciones/insertar")
     @ResponseBody
     public Calificaciones guardar(@RequestBody Calificaciones calificaciones) {
         return this.calificacionesRepositorio.save(calificaciones);

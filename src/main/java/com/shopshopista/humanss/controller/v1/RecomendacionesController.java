@@ -20,7 +20,7 @@ public class RecomendacionesController {
 	@Autowired
 	private IRecomendacionesRepository recomendacionesRepositorio;
 	
-	@PostMapping("/recomendaciones")
+	@PostMapping("/recomendaciones/insertar")
     @ResponseBody
     public Recomendaciones guardar(@RequestBody Recomendaciones recomendaciones) {
         return this.recomendacionesRepositorio.save(recomendaciones);
