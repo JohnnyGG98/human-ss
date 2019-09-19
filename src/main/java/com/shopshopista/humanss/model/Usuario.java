@@ -33,9 +33,9 @@ public class Usuario implements Serializable {
     @Column(name = "id_usuario")
     private Long id_usuario;
 
-    @JoinColumn(name = "id_persona", foreignKey = @ForeignKey(name = "fk_usuario_persona", foreignKeyDefinition = "FOREIGN KEY (id_persona) REFERENCES \"Personas\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Persona persona;
+    @JoinColumn(name="id_persona",  foreignKey = @ForeignKey(name="fk_usuario_persona", foreignKeyDefinition = "FOREIGN KEY (id_persona) REFERENCES human.\"Personas\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable=false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Persona persona;
 
     @Column(name = "user_nick", length = 50, nullable = false, columnDefinition = "character varying(50) UNIQUE")
     private String user_nick;

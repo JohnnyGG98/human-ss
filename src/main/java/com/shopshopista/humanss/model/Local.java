@@ -31,9 +31,9 @@ public class Local implements Serializable {
     private Long id_local;
 
     @JsonBackReference
-    @JoinColumn(name = "id_vendedor", nullable = false, foreignKey = @ForeignKey(name = "fk_local_vendedor", foreignKeyDefinition = "FOREIGN KEY (id_vendedor) REFERENCES \"Vendedores\" ON UPDATE CASCADE ON DELETE CASCADE"))
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Vendedor vendedor;
+	@JoinColumn(name="id_vendedor", nullable = false, foreignKey = @ForeignKey(name="fk_local_vendedor", foreignKeyDefinition = "FOREIGN KEY (id_vendedor) REFERENCES human.\"Vendedores\" ON UPDATE CASCADE ON DELETE CASCADE"))
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Vendedor vendedor;
 
     @Column(name = "loc_correo", length = 50, nullable = false)
     private String loc_correo;

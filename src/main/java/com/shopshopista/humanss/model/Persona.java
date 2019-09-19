@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(
         name = "\"Personas\"",
-        schema = "Human"
+        schema = "human"
 )
 public class Persona implements Serializable {
 
@@ -31,9 +31,9 @@ public class Persona implements Serializable {
     @Column(name = "id_persona")
     private Long id_persona;
 
-    @JoinColumn(name = "id_tipo_identificacion", foreignKey = @ForeignKey(name = "fk_persona_tipo_identificacion", foreignKeyDefinition = "FOREIGN KEY (id_tipo_identificacion) REFERENCES \"TiposIdentificacion\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    private TipoIdentificacion tipoIdentificacion;
+    @JoinColumn(name = "id_tipo_identificacion", foreignKey = @ForeignKey(name = "fk_persona_tipo_identificacion", foreignKeyDefinition = "FOREIGN KEY (id_tipo_identificacion) REFERENCES human.\"TiposIdentificacion\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable=false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	private TipoIdentificacion tipoIdentificacion;
 
     @Column(name = "per_identificacion", length = 15, nullable = false)
     private String per_identificacion;
