@@ -20,78 +20,77 @@ import java.io.Serializable;
         name = "\"Recomendaciones\"",
         schema = "human"
 )
-public class Recomendaciones implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)	
-	@Column(name = "id_recomendacion")
-	private Long id_recomendacion;
-	
-	@JsonBackReference
-	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_recomendaciones_fk"))
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Cliente cliente;
-	
-	@Column(name = "recomendacion", length = 255, nullable = false)
-	private String recomendacion;
-	
-	@Column(name = "reco_activo", columnDefinition="BOOLEAN DEFAULT 'true'", nullable = false)
-	private Boolean reco_activo;
+public class Recomendaciones implements Serializable {
 
-	public Recomendaciones() {
-		
-	}
+    private static final long serialVersionUID = 1L;
 
-	public Recomendaciones(Long id_recomendacion, Cliente cliente, String recomendacion, Boolean reco_activo) {
-		this.id_recomendacion = id_recomendacion;
-		this.cliente = cliente;
-		this.recomendacion = recomendacion;
-		this.reco_activo = reco_activo;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_recomendacion")
+    private Long id_recomendacion;
 
-	public Long getId_recomendacion() {
-		return id_recomendacion;
-	}
+    @JsonBackReference
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_recomendaciones_fk"))
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Cliente cliente;
 
-	public void setId_recomendacion(Long id_recomendacion) {
-		this.id_recomendacion = id_recomendacion;
-	}
+    @Column(name = "recomendacion", length = 255, nullable = false)
+    private String recomendacion;
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    @Column(name = "reco_activo", columnDefinition = "BOOLEAN DEFAULT 'true'", nullable = false)
+    private Boolean reco_activo;
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public Recomendaciones() {
 
-	public String getRecomendacion() {
-		return recomendacion;
-	}
+    }
 
-	public void setRecomendacion(String recomendacion) {
-		this.recomendacion = recomendacion;
-	}
+    public Recomendaciones(Long id_recomendacion, Cliente cliente, String recomendacion, Boolean reco_activo) {
+        this.id_recomendacion = id_recomendacion;
+        this.cliente = cliente;
+        this.recomendacion = recomendacion;
+        this.reco_activo = reco_activo;
+    }
 
-	public Boolean getReco_activo() {
-		return reco_activo;
-	}
+    public Long getId_recomendacion() {
+        return id_recomendacion;
+    }
 
-	public void setReco_activo(Boolean reco_activo) {
-		this.reco_activo = reco_activo;
-	}
+    public void setId_recomendacion(Long id_recomendacion) {
+        this.id_recomendacion = id_recomendacion;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	@Override
-	public String toString() {
-		return "Recomendaciones [id_recomendacion=" + id_recomendacion + ", recomendacion=" + recomendacion
-				+ ", reco_activo=" + reco_activo + "]";
-	}
-	
-	
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getRecomendacion() {
+        return recomendacion;
+    }
+
+    public void setRecomendacion(String recomendacion) {
+        this.recomendacion = recomendacion;
+    }
+
+    public Boolean getReco_activo() {
+        return reco_activo;
+    }
+
+    public void setReco_activo(Boolean reco_activo) {
+        this.reco_activo = reco_activo;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "Recomendaciones [id_recomendacion=" + id_recomendacion + ", recomendacion=" + recomendacion
+                + ", reco_activo=" + reco_activo + "]";
+    }
+
 }

@@ -20,7 +20,7 @@ import java.io.Serializable;
         name = "\"Calificaciones\"",
         schema = "human"
 )
-public class Calificaciones implements Serializable{
+public class Calificaciones implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

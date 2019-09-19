@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.shopshopista.humanss.model.Preferencias;
 
 @Repository
-public interface IPreferenciasRepository extends JpaRepository<Preferencias, Long>{
+public interface IPreferenciasRepository extends JpaRepository<Preferencias, Long> {
 
 }

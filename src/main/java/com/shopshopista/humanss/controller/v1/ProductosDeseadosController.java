@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.ProductosDeseados;
 import com.shopshopista.humanss.repository.IProductosDeseadosRepository;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
@@ -22,7 +23,7 @@ public class ProductosDeseadosController {
 
     @PostMapping("/guardar")
     @ResponseBody
-    public ProductosDeseados guardar(@RequestBody ProductosDeseados productosDeseados) {
+    public ProductosDeseados guardar(@Valid @RequestBody ProductosDeseados productosDeseados) {
         return this.productosDeseadosRepositorio.save(productosDeseados);
     }
 

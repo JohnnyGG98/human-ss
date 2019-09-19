@@ -22,7 +22,7 @@ import java.io.Serializable;
         name = "\"Preferencias\"",
         schema = "human"
 )
-public class Preferencias implements Serializable{
+public class Preferencias implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
