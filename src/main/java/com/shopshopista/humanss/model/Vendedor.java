@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -25,6 +26,9 @@ public class Vendedor extends Usuario implements Serializable {
 	@Column(name = "vend_max_productos",  nullable =false)	
 	private Integer vend_max_productos;
 	
+	@Column(name = "vend_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")
+	private Boolean vend_activo = true;
+	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Local> localesVendedor;
@@ -34,20 +38,14 @@ public class Vendedor extends Usuario implements Serializable {
 		super();
 	}
 	
-		
 
-
-	public Vendedor(Long id_usuario, Persona persona, String user_nick, String user_pass, Integer vend_max_productos,
-			List<Local> localesVendedor) {
-		super(id_usuario, persona, user_nick, user_pass);
+	public Vendedor(Long id_usuario, Persona persona, String user_nick, byte[] user_pass, Boolean user_activo,
+			Integer vend_max_productos, Boolean vend_activo, List<Local> localesVendedor) {
+		super(id_usuario, persona, user_nick, user_pass, user_activo);
 		this.vend_max_productos = vend_max_productos;
+		this.vend_activo = vend_activo;
 		this.localesVendedor = localesVendedor;
 	}
-
-
-
-
-
 
 
 
@@ -76,11 +74,27 @@ public class Vendedor extends Usuario implements Serializable {
 	}
 
 
+	
+	
+	public Boolean getVend_activo() {
+		return vend_activo;
+	}
+
+
+	public void setVend_activo(Boolean vend_activo) {
+		this.vend_activo = vend_activo;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Vendedor [vend_max_productos=" + vend_max_productos + ", toString()=" + super.toString() + "]";
+		return "Vendedor [vend_max_productos=" + vend_max_productos + ", vend_activo=" + vend_activo
+				+ ", localesVendedor=" + localesVendedor + ", toString()=" + super.toString() + "]";
 	}
+
+
+
+	
 
 
 	

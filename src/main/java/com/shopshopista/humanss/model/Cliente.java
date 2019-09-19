@@ -22,18 +22,24 @@ public class Cliente extends Usuario implements Serializable {
 	@Column(name = "cli_fecha_nacimiento" , nullable = false)
 	private LocalDate cli_fecha_nacimiento;
 
+	@Column(name = "cli_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")
+	private Boolean cli_activo = true;
+	
+	
+	
+
 	public Cliente() {
 		super();
 	}
 
+	
 
-	public Cliente(Long id_usuario, Persona persona, String user_nick, String user_pass,
-			LocalDate cli_fecha_nacimiento) {
-		super(id_usuario, persona, user_nick, user_pass);
+	public Cliente(Long id_usuario, Persona persona, String user_nick, byte[] user_pass, Boolean user_activo,
+			LocalDate cli_fecha_nacimiento, Boolean cli_activo) {
+		super(id_usuario, persona, user_nick, user_pass, user_activo);
 		this.cli_fecha_nacimiento = cli_fecha_nacimiento;
+		this.cli_activo = cli_activo;
 	}
-
-
 
 
 
@@ -50,10 +56,17 @@ public class Cliente extends Usuario implements Serializable {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "Cliente [cli_fecha_nacimiento=" + cli_fecha_nacimiento + ", toString()=" + super.toString() + "]";
+		return "Cliente [cli_fecha_nacimiento=" + cli_fecha_nacimiento + ", cli_activo=" + cli_activo + ", toString()="
+				+ super.toString() + "]";
 	}
+
+	
+
+
+	
 	
 
 }

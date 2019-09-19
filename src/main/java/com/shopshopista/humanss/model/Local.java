@@ -28,7 +28,7 @@ public class Local implements Serializable {
 	private Long id_local;
 
 	@JsonBackReference
-	@JoinColumn(name="id_vendedor", foreignKey = @ForeignKey(name="fk_local_vendedor", foreignKeyDefinition = "FOREIGN KEY (id_vendedor) REFERENCES \"Vendedores\" ON UPDATE CASCADE ON DELETE CASCADE"))
+	@JoinColumn(name="id_vendedor", nullable = false, foreignKey = @ForeignKey(name="fk_local_vendedor", foreignKeyDefinition = "FOREIGN KEY (id_vendedor) REFERENCES \"Vendedores\" ON UPDATE CASCADE ON DELETE CASCADE"))
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Vendedor vendedor;
 	
@@ -40,20 +40,28 @@ public class Local implements Serializable {
 	
 	@Column(name="loc_calle_secundaria", length = 150, nullable =false)
 	private String loc_calle_secundaria;
+	
+	@Column(name = "loc_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")
+	private Boolean loc_activo = true;
 
 	public Local() {
 		
 	}
 
-	public Local(Long id_local, Vendedor vendedor, String loc_correo, String loc_calle_principal,
-			String loc_calle_secundaria) {
 	
+
+	public Local(Long id_local, Vendedor vendedor, String loc_correo, String loc_calle_principal,
+			String loc_calle_secundaria, Boolean loc_activo) {
+		super();
 		this.id_local = id_local;
 		this.vendedor = vendedor;
 		this.loc_correo = loc_correo;
 		this.loc_calle_principal = loc_calle_principal;
 		this.loc_calle_secundaria = loc_calle_secundaria;
+		this.loc_activo = loc_activo;
 	}
+
+
 
 	public Long getId_local() {
 		return id_local;
@@ -98,13 +106,31 @@ public class Local implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
+
+	public Boolean getLoc_activo() {
+		return loc_activo;
+	}
+
+
+
+	public void setLoc_activo(Boolean loc_activo) {
+		this.loc_activo = loc_activo;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Local [id_local=" + id_local + ", vendedor=" + vendedor + ", loc_correo=" + loc_correo
 				+ ", loc_calle_principal=" + loc_calle_principal + ", loc_calle_secundaria=" + loc_calle_secundaria
-				+ "]";
+				+ ", loc_activo=" + loc_activo + "]";
 	}
+
+
+
+	
 	
 	
 	

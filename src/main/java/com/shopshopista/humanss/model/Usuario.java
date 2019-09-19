@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="\"Usuarios\"")
@@ -33,8 +35,9 @@ public class Usuario implements Serializable {
 	@Column(name = "id_usuario")
 	private Long id_usuario;
 	
-	@JsonBackReference
-	@JoinColumn(name="id_persona", foreignKey = @ForeignKey(name="fk_usuario_persona", foreignKeyDefinition = "FOREIGN KEY (id_persona) REFERENCES \"Personas\" ON UPDATE CASCADE ON DELETE CASCADE"))
+	
+	
+	@JoinColumn(name="id_persona",  foreignKey = @ForeignKey(name="fk_usuario_persona", foreignKeyDefinition = "FOREIGN KEY (id_persona) REFERENCES \"Personas\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable=false)
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Persona persona;
 	
@@ -43,17 +46,30 @@ public class Usuario implements Serializable {
 	
 	@Column(name = "user_pass", nullable = false)
 	private byte[] user_pass;
+	
+	@Column(name = "user_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")
+	private Boolean user_activo = true;
 
 	public Usuario() {
 		
 	}
 
-	public Usuario(Long id_usuario, Persona persona, String user_nick, String user_pass) {
+
+	
+
+
+	public Usuario(Long id_usuario, Persona persona, String user_nick, byte[] user_pass, Boolean user_activo) {
+		
 		this.id_usuario = id_usuario;
 		this.persona = persona;
 		this.user_nick = user_nick;
-		this.user_pass = Base64.encodeBase64(user_pass.getBytes());
+		this.user_pass = user_pass;
+		this.user_activo = user_activo;
 	}
+
+
+
+
 
 	public Long getId_usuario() {
 		return id_usuario;
@@ -91,11 +107,31 @@ public class Usuario implements Serializable {
 		return serialVersionUID;
 	}
 
+
+	public Boolean getUser_activo() {
+		return user_activo;
+	}
+
+
+	public void setUser_activo(Boolean user_activo) {
+		this.user_activo = user_activo;
+	}
+
+
+	public void setUser_pass(byte[] user_pass) {
+		this.user_pass = user_pass;
+	}
+
+	
+	
+
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", persona=" + persona + ", user_nick=" + user_nick
-				+ ", user_pass=" + Arrays.toString(user_pass) + "]";
+				+ ", user_pass=" + Arrays.toString(user_pass) + ", user_activo=" + user_activo + "]";
 	}
+
+	
 
 	
 	
