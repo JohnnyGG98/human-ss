@@ -14,20 +14,20 @@ import com.shopshopista.humanss.model.Vendedor;
 import com.shopshopista.humanss.repository.IVendedorRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("api/v1/vendedor")
 @CrossOrigin
 public class VendedorController {
 
-	@Autowired
-	private IVendedorRepository vendedorRepositorio;
-	
-	@PostMapping("/vendedores/insertar")
+    @Autowired
+    private IVendedorRepository vendedorRepositorio;
+
+    @PostMapping("/guardar")
     public Vendedor insertar(@RequestBody Vendedor vendedor) {
         return this.vendedorRepositorio.save(vendedor);
     }
-	
-	 @GetMapping("/vendedores")
-	 public List<Vendedor> seleccionar() {
-	    return this.vendedorRepositorio.findAll();
-	 }
+
+    @GetMapping("/")
+    public List<Vendedor> seleccionar() {
+        return this.vendedorRepositorio.findAll();
+    }
 }

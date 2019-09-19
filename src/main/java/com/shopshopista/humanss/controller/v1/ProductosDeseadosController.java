@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.ProductosDeseados;
 import com.shopshopista.humanss.repository.IProductosDeseadosRepository;
-
-
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@RequestMapping("api/v1/producto/deseados")
 public class ProductosDeseadosController {
 
-	@Autowired
-	private IProductosDeseadosRepository productosDeseadosRepositorio;
-	
-	@PostMapping("/productosDeseados/insertar")
+    @Autowired
+    private IProductosDeseadosRepository productosDeseadosRepositorio;
+
+    @PostMapping("/guardar")
     @ResponseBody
     public ProductosDeseados guardar(@RequestBody ProductosDeseados productosDeseados) {
         return this.productosDeseadosRepositorio.save(productosDeseados);
     }
-	
-	@GetMapping("/productosDeseados")
-	 public List<ProductosDeseados> seleccionar() {
-	    return this.productosDeseadosRepositorio.findAll();
-	 }
+
+    @GetMapping("/")
+    public List<ProductosDeseados> seleccionar() {
+        return this.productosDeseadosRepositorio.findAll();
+    }
 }

@@ -18,7 +18,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "\"Personas\"" )
+@Table(
+        name = "\"Personas\"",
+        schema = "Human"
+)
 
 public class Persona implements Serializable {
 

@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.Recomendaciones;
 import com.shopshopista.humanss.repository.IRecomendacionesRepository;
-
-
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@RequestMapping("api/v1/recomendacion/")
 public class RecomendacionesController {
 
-	@Autowired
-	private IRecomendacionesRepository recomendacionesRepositorio;
-	
-	@PostMapping("/recomendaciones/insertar")
+    @Autowired
+    private IRecomendacionesRepository recomendacionesRepositorio;
+
+    @PostMapping("/guardar")
     @ResponseBody
     public Recomendaciones guardar(@RequestBody Recomendaciones recomendaciones) {
         return this.recomendacionesRepositorio.save(recomendaciones);
     }
-	
-	 @GetMapping("/recomendaciones")
-	 public List<Recomendaciones> seleccionar() {
-	    return this.recomendacionesRepositorio.findAll();
-	 }
+
+    @GetMapping("/")
+    public List<Recomendaciones> seleccionar() {
+        return this.recomendacionesRepositorio.findAll();
+    }
 }

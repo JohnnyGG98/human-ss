@@ -17,7 +17,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "\"Locales\"" )
+@Table(
+        name = "\"Locales\"",
+        schema = "human"
+)
 public class Local implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -10,20 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.Cliente;
 import com.shopshopista.humanss.repository.IClienteRepository;
+import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@RequestMapping("/api/v1/cliente")
 public class ClienteController {
 
-	@Autowired
-	private IClienteRepository clienteRepositorio;
-	
-	@PostMapping("/clientes/insertar")
-    public Cliente insertar(@RequestBody Cliente cliente) {
+    @Autowired
+    private IClienteRepository clienteRepositorio;
+
+    @PostMapping("/guardar")
+    public Cliente insertar(@Valid @RequestBody Cliente cliente) {
         return this.clienteRepositorio.save(cliente);
     }
-	
-	 @GetMapping("/clientes")
-	 public List<Cliente> seleccionar() {
-	    return this.clienteRepositorio.findAll();
-	 }
+
+    @GetMapping("/")
+    public List<Cliente> seleccionar() {
+        return this.clienteRepositorio.findAll();
+    }
 }

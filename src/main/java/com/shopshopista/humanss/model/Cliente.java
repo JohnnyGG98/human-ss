@@ -11,7 +11,10 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="\"Clientes\"")
+@Table(
+        name="\"Clientes\"",
+        schema = "human"
+)
 @PrimaryKeyJoinColumn(name = "id_cliente", foreignKey=@ForeignKey(name = "fk_cliente_usuario") )
 public class Cliente extends Usuario implements Serializable {
 

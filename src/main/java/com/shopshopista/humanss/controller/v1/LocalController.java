@@ -10,20 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.Local;
 import com.shopshopista.humanss.repository.ILocalRepository;
+import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-public class LocalController  {
+@RequestMapping("api/v1/local")
+public class LocalController {
 
-	@Autowired
-	private ILocalRepository localRepositorio;
-	
-	@PostMapping("/locales/insertar")
-    public Local insertar(@RequestBody Local local) {
+    @Autowired
+    private ILocalRepository localRepositorio;
+
+    @PostMapping("/guardar")
+    public Local insertar(@Valid @RequestBody Local local) {
         return this.localRepositorio.save(local);
     }
-	
-	 @GetMapping("/locales")
-	 public List<Local> seleccionar() {
-	    return this.localRepositorio.findAll();
-	 }
+
+    @GetMapping("/")
+    public List<Local> seleccionar() {
+        return this.localRepositorio.findAll();
+    }
 }

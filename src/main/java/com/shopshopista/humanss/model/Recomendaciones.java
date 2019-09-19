@@ -16,7 +16,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Recomendaciones")
+@Table(
+        name = "Recomendaciones",
+        schema = "human"
+)
 public class Recomendaciones implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

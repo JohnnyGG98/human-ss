@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.Persona;
 import com.shopshopista.humanss.repository.IPersonaRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController
+@RequestMapping("api/v1/persona/")
 public class PersonaController {
 
 	@Autowired
 	private IPersonaRepository personaRepositorio;
 	
-	 @GetMapping("/personas")
+	 @GetMapping("/")
 	 public List<Persona> seleccionar() {
 	    return this.personaRepositorio.findAll();
 	 }

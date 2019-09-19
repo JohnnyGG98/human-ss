@@ -14,7 +14,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "\"Vendedores\"")
+@Table(
+        name = "\"Vendedores\"",
+        schema = "human"
+)
 @PrimaryKeyJoinColumn(name = "id_vendedor", foreignKey=@ForeignKey(name = "fk_vendedor_usuario"))
 public class Vendedor extends Usuario implements Serializable {
 	

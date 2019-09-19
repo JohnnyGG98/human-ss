@@ -22,7 +22,10 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name="\"Usuarios\"")
+@Table(
+        name="\"Usuarios\"",
+        schema = "human"
+)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
 
