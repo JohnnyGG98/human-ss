@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/api/v1/cliente")
+@RequestMapping("api/v1/cliente")
 public class ClienteController {
 
     @Autowired

@@ -17,7 +17,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "Recomendaciones",
+        name = "\"Recomendaciones\"",
         schema = "human"
 )
 public class Recomendaciones implements Serializable{
