@@ -1,6 +1,7 @@
 package com.shopshopista.humanss.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,8 +18,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
         name = "\"Vendedores\"",
         schema = "human"
 )
-@PrimaryKeyJoinColumn(name = "id_vendedor", foreignKey = @ForeignKey(name = "fk_vendedor_usuario"))
-public class Vendedor extends Usuario implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_vendedor", foreignKey = @ForeignKey(name = "fk_vendedor_persona"))
+public class Vendedor extends Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,15 +37,24 @@ public class Vendedor extends Usuario implements Serializable {
         super();
     }
 
-    public Vendedor(Long id_usuario, Persona persona, String user_nick, byte[] user_pass, Boolean user_activo,
-            Integer vend_max_productos, Boolean vend_activo, List<Local> localesVendedor) {
-        super(id_usuario, persona, user_nick, user_pass, user_activo);
-        this.vend_max_productos = vend_max_productos;
-        this.vend_activo = vend_activo;
-        this.localesVendedor = localesVendedor;
-    }
+    
+	public Vendedor(Long id_persona, Usuario usuario, TipoIdentificacion tipoIdentificacion, String per_identificacion,
+			String per_primer_nombre, String per_segundo_nombre, String per_primer_apellido,
+			String per_segundo_apellido, String per_correo, String per_sexo, LocalDateTime per_fecha_registro,
+			Boolean per_activo, Integer vend_max_productos, Boolean vend_activo, List<Local> localesVendedor) {
+		super(id_persona, usuario, tipoIdentificacion, per_identificacion, per_primer_nombre, per_segundo_nombre,
+				per_primer_apellido, per_segundo_apellido, per_correo, per_sexo, per_fecha_registro, per_activo);
+		this.vend_max_productos = vend_max_productos;
+		this.vend_activo = vend_activo;
+		this.localesVendedor = localesVendedor;
+	}
 
-    public Integer getVend_max_productos() {
+
+
+
+
+
+	public Integer getVend_max_productos() {
         return vend_max_productos;
     }
 

@@ -21,9 +21,9 @@ import org.apache.tomcat.util.codec.binary.Base64;
 @Entity
 @Table(
         name = "\"Usuarios\"",
-        schema = "human"
+        schema = "public"
 )
-@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,9 +33,7 @@ public class Usuario implements Serializable {
     @Column(name = "id_usuario")
     private Long id_usuario;
 
-    @JoinColumn(name="id_persona",  foreignKey = @ForeignKey(name="fk_usuario_persona", foreignKeyDefinition = "FOREIGN KEY (id_persona) REFERENCES human.\"Personas\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable=false)
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Persona persona;
+    
 
     @Column(name = "user_nick", length = 50, nullable = false, columnDefinition = "character varying(50) UNIQUE")
     private String user_nick;
@@ -50,16 +48,19 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(Long id_usuario, Persona persona, String user_nick, byte[] user_pass, Boolean user_activo) {
+    
 
-        this.id_usuario = id_usuario;
-        this.persona = persona;
-        this.user_nick = user_nick;
-        this.user_pass = user_pass;
-        this.user_activo = user_activo;
-    }
+    public Usuario(Long id_usuario, String user_nick, byte[] user_pass, Boolean user_activo) {
+		super();
+		this.id_usuario = id_usuario;
+		this.user_nick = user_nick;
+		this.user_pass = user_pass;
+		this.user_activo = user_activo;
+	}
 
-    public Long getId_usuario() {
+
+
+	public Long getId_usuario() {
         return id_usuario;
     }
 
@@ -67,13 +68,7 @@ public class Usuario implements Serializable {
         this.id_usuario = id_usuario;
     }
 
-    public Persona getPersona() {
-        return persona;
-    }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
 
     public String getUser_nick() {
         return user_nick;
@@ -107,10 +102,14 @@ public class Usuario implements Serializable {
         this.user_pass = user_pass;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario [id_usuario=" + id_usuario + ", persona=" + persona + ", user_nick=" + user_nick
-                + ", user_pass=" + Arrays.toString(user_pass) + ", user_activo=" + user_activo + "]";
-    }
+
+
+	@Override
+	public String toString() {
+		return "Usuario [id_usuario=" + id_usuario + ", user_nick=" + user_nick + ", user_pass="
+				+ Arrays.toString(user_pass) + ", user_activo=" + user_activo + "]";
+	}
+
+  
 
 }

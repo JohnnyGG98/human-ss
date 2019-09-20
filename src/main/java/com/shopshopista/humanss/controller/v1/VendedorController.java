@@ -34,6 +34,11 @@ public class VendedorController {
     public List<Vendedor> seleccionar() {
         return this.vendedorRepositorio.findAll();
     }
+    
+    @GetMapping(path= {"/{id}"})
+	 public Vendedor seleccionarId(@PathVariable("id") Long id) {
+		 return this.vendedorRepositorio.getOne(id);
+	 }
 
     @PutMapping(path = {"/editar/{id}"})
     public Vendedor actualizar(@RequestBody Vendedor v, @PathVariable("id") Long id) {
