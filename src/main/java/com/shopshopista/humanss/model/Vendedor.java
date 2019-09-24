@@ -11,14 +11,18 @@ import javax.persistence.ForeignKey;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Where;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-@Entity
+@Entity(name = "Vendedores" )
 @Table(
         name = "\"Vendedores\"",
         schema = "human"
 )
 @PrimaryKeyJoinColumn(name = "id_vendedor", foreignKey = @ForeignKey(name = "fk_vendedor_persona"))
+@Where(clause = "vend_activo = true")
 public class Vendedor extends Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;

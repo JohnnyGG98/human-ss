@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.shopshopista.humanss.model.Cliente;
+import com.shopshopista.humanss.model.Vendedor;
 import com.shopshopista.humanss.repository.IClienteRepository;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +29,16 @@ public class ClienteController {
     @PostMapping("/guardar")
     public Cliente insertar(@Valid @RequestBody Cliente cliente) {
         return this.clienteRepositorio.save(cliente);
+    }
+    
+    @GetMapping(path= {"/{id}"})
+	 public Cliente seleccionarId(@PathVariable("id") Long id) {
+		 return this.clienteRepositorio.getOne(id);
+	 }
+    
+    @PutMapping(path = {"/editar/{id}"})
+    public Cliente actualizar(@RequestBody Cliente c, @PathVariable("id") Long id) {
+        return this.clienteRepositorio.save(c);
     }
 
     @GetMapping("/")

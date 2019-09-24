@@ -20,7 +20,7 @@ public class TipoIdentificacion implements Serializable {
     @Column(name = "id_tipo_identificacion")
     private Long id_tipo_identificacion;
 
-    @Column(name = "tiid_nombre", length = 10, nullable = false)
+    @Column(name = "tiid_nombre", length = 10)
     private String tiid_nombre;
 
     @Column(name = "tiid_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")

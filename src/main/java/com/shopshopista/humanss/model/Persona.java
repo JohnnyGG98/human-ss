@@ -19,12 +19,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
+import org.hibernate.annotations.Where;
+
+
+@Entity(name = "Personas")
 @Table(
         name = "\"Personas\"",
         schema = "human"
 )
 @Inheritance(strategy = InheritanceType.JOINED)
+@Where(clause = "per_activo = true")
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,7 +43,7 @@ public class Persona implements Serializable {
 	private Usuario usuario;
 
     @JoinColumn(name = "id_tipo_identificacion", foreignKey = @ForeignKey(name = "fk_persona_tipo_identificacion", foreignKeyDefinition = "FOREIGN KEY (id_tipo_identificacion) REFERENCES human.\"TiposIdentificacion\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable=false)
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TipoIdentificacion tipoIdentificacion;
 
     @Column(name = "per_identificacion", length = 15, nullable = false)

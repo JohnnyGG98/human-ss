@@ -17,13 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(
         name = "\"Usuarios\"",
         schema = "public"
 )
-
+@Where(clause = "user_activo = true")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
