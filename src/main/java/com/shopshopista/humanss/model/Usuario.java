@@ -17,8 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "user_activo = true")
+@Entity(
+        name = "Usuario"
+)
 @Table(
         name = "\"Usuarios\"",
         schema = "human"

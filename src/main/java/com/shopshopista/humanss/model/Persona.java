@@ -16,8 +16,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "per_activo = true")
+@Entity(
+        name = "Persona"
+)
 @Table(
         name = "\"Personas\"",
         schema = "Human"

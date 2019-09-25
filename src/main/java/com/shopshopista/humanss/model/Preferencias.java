@@ -16,8 +16,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "pref_activo = true")
+@Entity(
+        name = "Preferencias"
+)
 @Table(
         name = "\"Preferencias\"",
         schema = "human"
@@ -27,7 +31,7 @@ public class Preferencias implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_preferencia")
     private Long id_preferencia;
 

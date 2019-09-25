@@ -14,8 +14,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "cal_activo = true")
+@Entity(
+        name = "Calificaciones"
+)
 @Table(
         name = "\"Calificaciones\"",
         schema = "human"
@@ -25,7 +29,7 @@ public class Calificaciones implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_calificacion")
     private Long id_calificacion;
 
@@ -41,7 +45,7 @@ public class Calificaciones implements Serializable {
     private Double calificacion;
 
     @Column(name = "cal_activo", columnDefinition = "BOOLEAN DEFAULT 'true'")
-    private Boolean cal_activo;
+    private Boolean cal_activo = true;
 
     public Calificaciones() {
 

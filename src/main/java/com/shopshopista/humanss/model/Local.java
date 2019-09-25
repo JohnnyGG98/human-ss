@@ -15,8 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "loc_activo = true")
+@Entity(
+        name = "Local"
+)
 @Table(
         name = "\"Locales\"",
         schema = "human"

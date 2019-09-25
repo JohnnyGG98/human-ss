@@ -8,8 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "cli_activo = true")
+@Entity(
+        name = "Cliente"
+)
 @Table(
         name = "\"Clientes\"",
         schema = "human"

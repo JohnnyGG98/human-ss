@@ -11,8 +11,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Where;
 
-@Entity
+@Where(clause = "vend_activo = true")
+@Entity(
+        name = "Vendedor"
+)
 @Table(
         name = "\"Vendedores\"",
         schema = "human"

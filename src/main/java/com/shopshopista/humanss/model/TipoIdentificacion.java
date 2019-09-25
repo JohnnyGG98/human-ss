@@ -8,9 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.Where;
 
-@Entity
-@Table(name = "\"TiposIdentificacion\"")
+@Where(clause = "tiid = true")
+@Entity(
+        name = "TipoIdentificacion"
+)
+@Table(
+        name = "\"TiposIdentificacion\"",
+        schema = "human"
+)
 public class TipoIdentificacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
