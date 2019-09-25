@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shopshopista.humanss.model.Persona;
 import com.shopshopista.humanss.model.Vendedor;
 import com.shopshopista.humanss.repository.IVendedorRepository;
 
@@ -34,9 +36,24 @@ public class VendedorController {
     public List<Vendedor> seleccionar() {
         return this.vendedorRepositorio.findAll();
     }
+    
+    @GetMapping(path= {"/{id}"})
+	 public Vendedor seleccionarId(@PathVariable("id") Long id) {
+		 return this.vendedorRepositorio.getOne(id);
+	 }
 
     @PutMapping(path = {"/editar/{id}"})
     public Vendedor actualizar(@RequestBody Vendedor v, @PathVariable("id") Long id) {
         return this.vendedorRepositorio.save(v);
     }
+    
+    
+    @PutMapping(path = {"/eliminar/{id}"})
+	 public Persona eliminar(@RequestBody Vendedor p, @PathVariable("id") Long id) {
+	       return this.vendedorRepositorio.save(p);
+	 }
+    
+    
+
+    
 }

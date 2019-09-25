@@ -13,19 +13,20 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Where;
 
-@Where(clause = "per_activo = true")
-@Entity(
-        name = "Persona"
-)
+@Entity(name = "Personas")
 @Table(
         name = "\"Personas\"",
-        schema = "Human"
+        schema = "human"
 )
+@Inheritance(strategy = InheritanceType.JOINED)
+@Where(clause = "per_activo = true")
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,8 +36,12 @@ public class Persona implements Serializable {
     @Column(name = "id_persona")
     private Long id_persona;
 
-    @JoinColumn(name = "id_tipo_identificacion", foreignKey = @ForeignKey(name = "fk_persona_tipo_identificacion", foreignKeyDefinition = "FOREIGN KEY (id_tipo_identificacion) REFERENCES \"TiposIdentificacion\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_persona_usuario", foreignKeyDefinition = "FOREIGN KEY (id_usuario) REFERENCES public.\"Usuarios\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Usuario usuario;
+
+    @JoinColumn(name = "id_tipo_identificacion", foreignKey = @ForeignKey(name = "fk_persona_tipo_identificacion", foreignKeyDefinition = "FOREIGN KEY (id_tipo_identificacion) REFERENCES human.\"TiposIdentificacion\" ON UPDATE CASCADE ON DELETE CASCADE"), nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     private TipoIdentificacion tipoIdentificacion;
 
     @Column(name = "per_identificacion", length = 15, nullable = false)
@@ -70,14 +75,23 @@ public class Persona implements Serializable {
 
     }
 
-    public Persona(Long id_persona, TipoIdentificacion tipoIdentificacion, String per_identificacion, String per_primer_nombre, String per_primer_apellido, String per_correo, String per_sexo) {
+    public Persona(Long id_persona, Usuario usuario, TipoIdentificacion tipoIdentificacion, String per_identificacion,
+            String per_primer_nombre, String per_segundo_nombre, String per_primer_apellido,
+            String per_segundo_apellido, String per_correo, String per_sexo, LocalDateTime per_fecha_registro,
+            Boolean per_activo) {
+
         this.id_persona = id_persona;
+        this.usuario = usuario;
         this.tipoIdentificacion = tipoIdentificacion;
         this.per_identificacion = per_identificacion;
         this.per_primer_nombre = per_primer_nombre;
+        this.per_segundo_nombre = per_segundo_nombre;
         this.per_primer_apellido = per_primer_apellido;
+        this.per_segundo_apellido = per_segundo_apellido;
         this.per_correo = per_correo;
         this.per_sexo = per_sexo;
+        this.per_fecha_registro = per_fecha_registro;
+        this.per_activo = per_activo;
     }
 
     public Long getId_persona() {
@@ -172,13 +186,22 @@ public class Persona implements Serializable {
         this.per_activo = per_activo;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public String toString() {
-        return "Persona [id_persona=" + id_persona + ", id_tipo_identificacion=" + tipoIdentificacion
-                + ", per_identificacion=" + per_identificacion + ", per_primer_nombre=" + per_primer_nombre
-                + ", per_segundo_nombre=" + per_segundo_nombre + ", per_primer_apellido=" + per_primer_apellido
-                + ", per_segundo_apellido=" + per_segundo_apellido + ", per_correo=" + per_correo + ", per_sexo="
-                + per_sexo + ", per_fecha_registro=" + per_fecha_registro + ", per_activo=" + per_activo + "]";
+        return "Persona [id_persona=" + id_persona + ", usuario=" + usuario + ", tipoIdentificacion="
+                + tipoIdentificacion + ", per_identificacion=" + per_identificacion + ", per_primer_nombre="
+                + per_primer_nombre + ", per_segundo_nombre=" + per_segundo_nombre + ", per_primer_apellido="
+                + per_primer_apellido + ", per_segundo_apellido=" + per_segundo_apellido + ", per_correo=" + per_correo
+                + ", per_sexo=" + per_sexo + ", per_fecha_registro=" + per_fecha_registro + ", per_activo=" + per_activo
+                + "]";
     }
 
 }
