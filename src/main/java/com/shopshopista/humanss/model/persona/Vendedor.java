@@ -1,5 +1,7 @@
-package com.shopshopista.humanss.model;
+package com.shopshopista.humanss.model.persona;
 
+import com.shopshopista.humanss.model.persona.Usuario;
+import com.shopshopista.humanss.model.persona.Persona;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.shopshopista.humanss.model.vendedor.Local;
 import javax.persistence.Entity;
 import org.hibernate.annotations.Where;
 

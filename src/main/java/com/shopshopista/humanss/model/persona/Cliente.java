@@ -1,5 +1,6 @@
-package com.shopshopista.humanss.model;
+package com.shopshopista.humanss.model.persona;
 
+import com.shopshopista.humanss.model.persona.Persona;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

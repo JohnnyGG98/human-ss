@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.Preferencias;
+import com.shopshopista.humanss.model.cliente.Preferencias;
 import com.shopshopista.humanss.repository.IPreferenciasRepository;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;

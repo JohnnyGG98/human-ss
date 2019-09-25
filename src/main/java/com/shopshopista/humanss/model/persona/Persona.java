@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.model;
+package com.shopshopista.humanss.model.persona;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

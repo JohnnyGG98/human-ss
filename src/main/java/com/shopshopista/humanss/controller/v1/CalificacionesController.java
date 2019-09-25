@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.Calificaciones;
+import com.shopshopista.humanss.model.cliente.Calificaciones;
 import com.shopshopista.humanss.repository.ICalificacionesRepository;
 import java.util.List;
 import javax.validation.Valid;

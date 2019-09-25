@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.Persona;
-import com.shopshopista.humanss.model.Vendedor;
+import com.shopshopista.humanss.model.persona.Persona;
+import com.shopshopista.humanss.model.persona.Vendedor;
 import com.shopshopista.humanss.repository.IPersonaRepository;
 import com.shopshopista.humanss.repository.IVendedorRepository;
 

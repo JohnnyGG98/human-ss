@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.Usuario;
+import com.shopshopista.humanss.model.persona.Usuario;
 import com.shopshopista.humanss.repository.IUsuarioRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 

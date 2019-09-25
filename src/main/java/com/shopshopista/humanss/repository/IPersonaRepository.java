@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shopshopista.humanss.model.Persona;
+import com.shopshopista.humanss.model.persona.Persona;
 
 @Repository
 public interface IPersonaRepository extends JpaRepository<Persona, Long> {

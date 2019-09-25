@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shopshopista.humanss.model.Vendedor;
+import com.shopshopista.humanss.model.persona.Vendedor;
 
 @Repository
 public interface IVendedorRepository extends JpaRepository<Vendedor, Long> {

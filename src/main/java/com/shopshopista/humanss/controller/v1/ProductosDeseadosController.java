@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.ProductosDeseados;
+import com.shopshopista.humanss.model.cliente.ProductosDeseados;
 import com.shopshopista.humanss.repository.IProductosDeseadosRepository;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;

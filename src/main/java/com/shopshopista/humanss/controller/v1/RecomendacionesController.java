@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.Recomendaciones;
+import com.shopshopista.humanss.model.cliente.Recomendaciones;
 import com.shopshopista.humanss.repository.IRecomendacionesRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 

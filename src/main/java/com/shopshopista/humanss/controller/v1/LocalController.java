@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopshopista.humanss.model.Local;
+import com.shopshopista.humanss.model.vendedor.Local;
 import com.shopshopista.humanss.repository.ILocalRepository;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
