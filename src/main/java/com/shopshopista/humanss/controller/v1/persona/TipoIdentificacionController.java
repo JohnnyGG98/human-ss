@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.persona.TipoIdentificacion;
-import com.shopshopista.humanss.model.persona.Vendedor;
+import com.shopshopista.humanss.model.vendedor.Vendedor;
 import com.shopshopista.humanss.repository.persona.ITipoIdentificacionRepository;
 
 

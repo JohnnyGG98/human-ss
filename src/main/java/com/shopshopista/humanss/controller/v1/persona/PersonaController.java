@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.persona.Persona;
-import com.shopshopista.humanss.model.persona.Vendedor;
+import com.shopshopista.humanss.model.vendedor.Vendedor;
 import com.shopshopista.humanss.repository.persona.IPersonaRepository;
 import com.shopshopista.humanss.repository.vendedor.IVendedorRepository;
 

@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.model.persona;
+package com.shopshopista.humanss.model.vendedor;
 
 import com.shopshopista.humanss.model.persona.Usuario;
 import com.shopshopista.humanss.model.persona.Persona;
@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.shopshopista.humanss.model.persona.Persona;
+import com.shopshopista.humanss.model.persona.TipoIdentificacion;
+import com.shopshopista.humanss.model.persona.Usuario;
 import com.shopshopista.humanss.model.vendedor.Local;
 import javax.persistence.Entity;
 import org.hibernate.annotations.Where;

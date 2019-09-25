@@ -1,6 +1,5 @@
 package com.shopshopista.humanss.model.cliente;
 
-import com.shopshopista.humanss.model.persona.Cliente;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;

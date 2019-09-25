@@ -1,6 +1,5 @@
 package com.shopshopista.humanss.model.cliente;
 
-import com.shopshopista.humanss.model.persona.Cliente;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

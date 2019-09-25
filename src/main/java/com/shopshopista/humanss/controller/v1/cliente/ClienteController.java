@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.shopshopista.humanss.model.persona.Cliente;
-import com.shopshopista.humanss.model.persona.Vendedor;
+import com.shopshopista.humanss.model.cliente.Cliente;
+import com.shopshopista.humanss.model.vendedor.Vendedor;
 import com.shopshopista.humanss.repository.cliente.IClienteRepository;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.CrossOrigin;

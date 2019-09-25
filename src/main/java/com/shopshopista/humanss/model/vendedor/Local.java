@@ -1,6 +1,5 @@
 package com.shopshopista.humanss.model.vendedor;
 
-import com.shopshopista.humanss.model.persona.Vendedor;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
