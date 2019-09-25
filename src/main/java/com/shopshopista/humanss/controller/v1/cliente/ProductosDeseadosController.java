@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.controller.v1;
+package com.shopshopista.humanss.controller.v1.cliente;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.cliente.ProductosDeseados;
-import com.shopshopista.humanss.repository.IProductosDeseadosRepository;
+import com.shopshopista.humanss.repository.cliente.IProductosDeseadosRepository;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
 

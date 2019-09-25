@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.repository;
+package com.shopshopista.humanss.repository.cliente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

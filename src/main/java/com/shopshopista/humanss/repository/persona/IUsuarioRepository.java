@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.repository;
+package com.shopshopista.humanss.repository.persona;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

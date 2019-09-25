@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.controller.v1;
+package com.shopshopista.humanss.controller.v1.persona;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.persona.TipoIdentificacion;
 import com.shopshopista.humanss.model.persona.Vendedor;
-import com.shopshopista.humanss.repository.ITipoIdentificacionRepository;
+import com.shopshopista.humanss.repository.persona.ITipoIdentificacionRepository;
 
 
 

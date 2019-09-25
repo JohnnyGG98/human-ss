@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.controller.v1;
+package com.shopshopista.humanss.controller.v1.vendedor;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shopshopista.humanss.model.persona.Persona;
 import com.shopshopista.humanss.model.persona.Vendedor;
-import com.shopshopista.humanss.repository.IVendedorRepository;
+import com.shopshopista.humanss.repository.vendedor.IVendedorRepository;
 
 @RestController
 

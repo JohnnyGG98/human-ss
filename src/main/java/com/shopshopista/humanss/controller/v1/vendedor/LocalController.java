@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.controller.v1;
+package com.shopshopista.humanss.controller.v1.vendedor;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.vendedor.Local;
-import com.shopshopista.humanss.repository.ILocalRepository;
+import com.shopshopista.humanss.repository.vendedor.ILocalRepository;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
 

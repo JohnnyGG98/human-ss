@@ -1,4 +1,4 @@
-package com.shopshopista.humanss.controller.v1;
+package com.shopshopista.humanss.controller.v1.cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.cliente.Calificaciones;
-import com.shopshopista.humanss.repository.ICalificacionesRepository;
+import com.shopshopista.humanss.repository.cliente.ICalificacionesRepository;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
