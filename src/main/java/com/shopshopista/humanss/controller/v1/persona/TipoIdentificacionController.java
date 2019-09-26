@@ -12,26 +12,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.persona.TipoIdentificacion;
-import com.shopshopista.humanss.model.vendedor.Vendedor;
 import com.shopshopista.humanss.repository.persona.ITipoIdentificacionRepository;
 
-
-
 @RestController
-@RequestMapping("api/v1/tipo-identificacion")
+@RequestMapping("api/v1/tipo/identificacion")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class TipoIdentificacionController {
 
-	@Autowired
-	private  ITipoIdentificacionRepository tipoIdentifiacionRepositorio;
-	
-	 @GetMapping("/")
-	 public List<TipoIdentificacion> seleccionar() {
-	    return this.tipoIdentifiacionRepositorio.findAll();
-	 }
-	 
-	 @PostMapping("/guardar")
-	    public TipoIdentificacion insertar(@RequestBody TipoIdentificacion tipoIdentificacion) {
-	        return this.tipoIdentifiacionRepositorio.save(tipoIdentificacion);
-	    }
+    @Autowired
+    private ITipoIdentificacionRepository tipoIdentifiacionRepositorio;
+
+    @GetMapping("/")
+    public List<TipoIdentificacion> seleccionar() {
+        return this.tipoIdentifiacionRepositorio.findAll();
+    }
+
+    @PostMapping("/guardar")
+    public TipoIdentificacion insertar(@RequestBody TipoIdentificacion tipoIdentificacion) {
+        return this.tipoIdentifiacionRepositorio.save(tipoIdentificacion);
+    }
 }
