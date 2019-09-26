@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.annotations.Where;
 
-@Where(clause = "tiid = true")
+@Where(clause = "tiid_activo = true")
 @Entity(
         name = "TipoIdentificacion"
 )
