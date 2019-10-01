@@ -2,15 +2,22 @@ package com.shopshopista.humanss.model.persona;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.hibernate.annotations.Where;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Where(clause = "user_activo = true")
 @Entity(
@@ -39,7 +46,7 @@ public class Usuario implements Serializable {
 
     @Column(name = "user_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")
     private Boolean user_activo = true;
-
+    
     public Usuario() {
 
     }

@@ -1,6 +1,9 @@
 package com.shopshopista.humanss.model.cliente;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +19,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
+
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.FilterJoinTable;
+import org.hibernate.annotations.Filters;
+import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.Where;
 
 @Where(clause = "pref_activo = true")
@@ -26,6 +35,9 @@ import org.hibernate.annotations.Where;
         name = "\"Preferencias\"",
         schema = "human"
 )
+@FilterDef(name = "buscarPorCliente", parameters = @ParamDef(name="id", type = "long"))
+@Filters(@Filter(name = "buscarPorCliente" , condition = ":id=id_cliente"))
+
 public class Preferencias implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,25 +47,24 @@ public class Preferencias implements Serializable {
     @Column(name = "id_preferencia")
     private Long id_preferencia;
 
-    @JsonBackReference
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", foreignKey = @ForeignKey(name = "cliente_preferencia_fk"))
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
-    @Column(name = "id_categoria")
+    @Column(name = "id_categoria", nullable=false)
     private Long id_categoria;
 
     @Column(name = "pref_fecha_ingreso", columnDefinition = "DATE DEFAULT now()", nullable = false)
-    private LocalDate pref_fecha_ingreso;
+    private LocalDateTime pref_fecha_ingreso= ZonedDateTime.now(ZoneId.of("America/Guayaquil")).toLocalDateTime();;
 
     @Column(name = "pref_activo", columnDefinition = "BOOLEAN DEFAULT 'true'", nullable = false)
-    private Boolean pref_activo;
+    private Boolean pref_activo=true;
 
     public Preferencias() {
 
     }
 
-    public Preferencias(Long id_preferencia, Cliente cliente, Long id_categoria, LocalDate pref_fecha_ingreso, Boolean pref_activo) {
+    public Preferencias(Long id_preferencia, Cliente cliente, Long id_categoria, LocalDateTime pref_fecha_ingreso, Boolean pref_activo) {
         this.id_preferencia = id_preferencia;
         this.cliente = cliente;
         this.id_categoria = id_categoria;
@@ -85,11 +96,11 @@ public class Preferencias implements Serializable {
         this.id_categoria = id_categoria;
     }
 
-    public LocalDate getPref_fecha_ingreso() {
+    public LocalDateTime getPref_fecha_ingreso() {
         return pref_fecha_ingreso;
     }
 
-    public void setPref_fecha_ingreso(LocalDate pref_fecha_ingreso) {
+    public void setPref_fecha_ingreso(LocalDateTime pref_fecha_ingreso) {
         this.pref_fecha_ingreso = pref_fecha_ingreso;
     }
 
