@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.shopshopista.humanss.model.cliente.Cliente;
-import com.shopshopista.humanss.model.vendedor.Vendedor;
 import com.shopshopista.humanss.repository.cliente.IClienteRepository;
+import com.shopshopista.humanss.services.persona.PersonaService;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,25 +20,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/v1/cliente")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class ClienteController {
 
     @Autowired
     private IClienteRepository clienteRepositorio;
 
+    @Autowired
+    private PersonaService PS;
+
     @PostMapping("/guardar")
     public Cliente insertar(@Valid @RequestBody Cliente cliente) {
-        return this.clienteRepositorio.save(cliente);
+        return PS.guardarCliente(cliente);
     }
-    
-    @GetMapping(path= {"/{id}"})
-	 public Cliente seleccionarId(@PathVariable("id") Long id) {
-		 return this.clienteRepositorio.getOne(id);
-	 }
-    
+
+    @GetMapping(path = {"/{id}"})
+    public Cliente seleccionarId(@PathVariable("id") Long id) {
+        return this.clienteRepositorio.getOne(id);
+    }
+
     @PutMapping(path = {"/editar/{id}"})
     public Cliente actualizar(@RequestBody Cliente c, @PathVariable("id") Long id) {
-        return this.clienteRepositorio.save(c);
+        return PS.guardarCliente(c);
     }
 
     @GetMapping("/")
