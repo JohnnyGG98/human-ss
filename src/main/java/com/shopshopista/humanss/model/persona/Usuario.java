@@ -1,23 +1,14 @@
 package com.shopshopista.humanss.model.persona;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.hibernate.annotations.Where;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Where(clause = "user_activo = true")
 @Entity(
@@ -36,42 +27,28 @@ public class Usuario implements Serializable {
     @Column(name = "id_usuario")
     private Long id_usuario;
 
-    
-
     @Column(name = "user_nick", length = 50, nullable = false, columnDefinition = "character varying(50) UNIQUE")
     private String user_nick;
 
     @Column(name = "user_pass", nullable = false)
-    private byte[] user_pass;
+    private String user_pass;
+
+    @Column(name = "user_tipo", nullable = false, columnDefinition = "character varying(1) DEFAULT 'C'")
+    private char user_tipo;
 
     @Column(name = "user_activo", nullable = false, columnDefinition = "boolean DEFAULT 'true'")
     private Boolean user_activo = true;
-    
-    public Usuario() {
 
+    public Usuario() {
     }
 
-    
-
-    public Usuario(Long id_usuario, String user_nick, byte[] user_pass, Boolean user_activo) {
-		super();
-		this.id_usuario = id_usuario;
-		this.user_nick = user_nick;
-		this.user_pass = user_pass;
-		this.user_activo = user_activo;
-	}
-
-
-
-	public Long getId_usuario() {
+    public Long getId_usuario() {
         return id_usuario;
     }
 
     public void setId_usuario(Long id_usuario) {
         this.id_usuario = id_usuario;
     }
-
-
 
     public String getUser_nick() {
         return user_nick;
@@ -81,16 +58,20 @@ public class Usuario implements Serializable {
         this.user_nick = user_nick;
     }
 
-    public byte[] getUser_pass() {
+    public String getUser_pass() {
         return user_pass;
     }
 
     public void setUser_pass(String user_pass) {
-        this.user_pass = Base64.encodeBase64(user_pass.getBytes());
+        this.user_pass = user_pass;
     }
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
+    public char getUser_tipo() {
+        return user_tipo;
+    }
+
+    public void setUser_tipo(char user_tipo) {
+        this.user_tipo = user_tipo;
     }
 
     public Boolean getUser_activo() {
@@ -100,19 +81,5 @@ public class Usuario implements Serializable {
     public void setUser_activo(Boolean user_activo) {
         this.user_activo = user_activo;
     }
-
-    public void setUser_pass(byte[] user_pass) {
-        this.user_pass = user_pass;
-    }
-
-
-
-	@Override
-	public String toString() {
-		return "Usuario [id_usuario=" + id_usuario + ", user_nick=" + user_nick + ", user_pass="
-				+ Arrays.toString(user_pass) + ", user_activo=" + user_activo + "]";
-	}
-
-  
 
 }
