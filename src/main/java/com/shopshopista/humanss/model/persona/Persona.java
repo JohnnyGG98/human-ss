@@ -59,6 +59,12 @@ public class Persona implements Serializable {
     @Column(name = "per_segundo_apellido", length = 75, columnDefinition = "character varying(75) DEFAULT ''")
     private String per_segundo_apellido = "";
 
+    @Column(name = "per_direccion", length = 200, columnDefinition = "character varying(200) DEFAULT ''")
+    private String per_direccion;
+
+    @Column(name = "per_telefono", length = 20, columnDefinition = "character varying(20) DEFAULT ''")
+    private String per_telefono;
+
     @Column(name = "per_correo", length = 50, nullable = false)
     private String per_correo;
 
@@ -192,6 +198,22 @@ public class Persona implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getPer_direccion() {
+        return per_direccion;
+    }
+
+    public void setPer_direccion(String per_direccion) {
+        this.per_direccion = per_direccion;
+    }
+
+    public String getPer_telefono() {
+        return per_telefono;
+    }
+
+    public void setPer_telefono(String per_telefono) {
+        this.per_telefono = per_telefono;
     }
 
     @Override
