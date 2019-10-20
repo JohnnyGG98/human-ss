@@ -1,7 +1,6 @@
 package com.shopshopista.humanss.model.cliente;
 
 import com.shopshopista.humanss.model.persona.Persona;
-import com.shopshopista.humanss.model.persona.Persona;
 import com.shopshopista.humanss.model.persona.TipoIdentificacion;
 import com.shopshopista.humanss.model.persona.Usuario;
 import java.io.Serializable;
