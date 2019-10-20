@@ -18,6 +18,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.Filters;
+import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.Where;
 
 @Entity(name = "Personas")
@@ -27,6 +32,8 @@ import org.hibernate.annotations.Where;
 )
 @Inheritance(strategy = InheritanceType.JOINED)
 @Where(clause = "per_activo = true")
+@FilterDef(name = "buscarPorUsuario", parameters = @ParamDef(name="id", type = "long"))
+@Filters(@Filter(name = "buscarPorUsuario" , condition = ":id=id_usuario"))
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
