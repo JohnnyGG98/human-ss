@@ -4,11 +4,14 @@ import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopshopista.humanss.model.cliente.Preferencias;
+import com.shopshopista.humanss.model.persona.Persona;
+import com.shopshopista.humanss.model.vendedor.Vendedor;
 import com.shopshopista.humanss.repository.cliente.IPreferenciasRepository;
 import java.util.List;
 
@@ -51,6 +54,11 @@ public class PreferenciasController {
         List<Preferencias> lista = preferenciaRepository.findAll();
         entityManager.unwrap(Session.class).disableFilter("buscarPorCliente");
         return lista;
+    }
+    
+    @PutMapping(path = {"/eliminar/{id}"})
+    public Preferencias eliminar(@RequestBody Preferencias p, @PathVariable("id") Long id) {
+        return this.preferenciaRepository.save(p);
     }
     
     

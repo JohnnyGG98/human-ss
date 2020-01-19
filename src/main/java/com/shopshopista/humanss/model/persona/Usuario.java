@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.Filters;
+import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.Where;
 
 @Where(clause = "user_activo = true")
@@ -18,6 +23,8 @@ import org.hibernate.annotations.Where;
         name = "\"Usuarios\"",
         schema = "public"
 )
+@FilterDef(name = "buscarPorNick", parameters = @ParamDef(name="nick", type = "string"))
+@Filters(@Filter(name = "buscarPorNick" , condition = ":nick=user_nick"))
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
